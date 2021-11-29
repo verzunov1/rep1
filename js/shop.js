@@ -163,9 +163,12 @@ $(document).ready(function() {
 	$('.btn-order').on('click', function() {
 		//console.log(cart.length);
 		for(let i=0; i<cart.length; i++){
-		var product_n = i;
-		var amount = cart[i];
-			$.ajax({
+		if(cart[i] != null){
+			if(cart[i] >0) {
+			var product_n = i;
+			var amount = cart[i];
+				$.ajax({
+					type: "POST",
                     url:'/../php/insert.php',
                     method:'POST',
                     data:{
@@ -176,8 +179,9 @@ $(document).ready(function() {
                        alert(data);
                    }
                 });
+			}
 		}
-		
+		}
 	});
 	
 });
